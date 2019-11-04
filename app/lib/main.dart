@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: null,
       debugShowCheckedModeBanner: false,
       color: Colors.white,
-      home: SignInPage(),
+      home: FirstLoginPage(),
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
     );

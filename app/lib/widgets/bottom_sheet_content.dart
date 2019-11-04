@@ -1,3 +1,4 @@
+import 'package:app/config/size_config.dart';
 import 'package:flutter/material.dart';
 
 class BottomSheetW extends StatefulWidget {
@@ -8,8 +9,9 @@ class BottomSheetW extends StatefulWidget {
 class _BottomSheetWState extends State<BottomSheetW> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
-      height: 850,
+      height: SizeConfig.blockSizeVertical * 95,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -20,11 +22,11 @@ class _BottomSheetWState extends State<BottomSheetW> {
       child: Column(
         children: <Widget>[
           Container(
-            height: 50,
+            height: SizeConfig.blockSizeVertical * 5,
             child: Center(
               child: Container(
-                width: 75,
-                height: 5,
+                width: SizeConfig.blockSizeHorizontal * 7.5,
+                height: SizeConfig.blockSizeVertical * 0.5,
                 decoration: BoxDecoration(
                   color: Color(0xFFE1E5EB),
                   borderRadius: BorderRadius.all(
@@ -39,15 +41,15 @@ class _BottomSheetWState extends State<BottomSheetW> {
               child: ListView(
                 children: <Widget>[
                   Container(
-                    height: 350,
+                    height: SizeConfig.blockSizeVertical * 35,
                     color: Colors.green,
                   ),
                   Container(
-                    height: 350,
+                    height: SizeConfig.blockSizeVertical * 35,
                     color: Colors.blue,
                   ),
                   Container(
-                    height: 350,
+                    height: SizeConfig.blockSizeVertical * 35,
                     color: Colors.cyan,
                   )
                 ],

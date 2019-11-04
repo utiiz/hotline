@@ -1,3 +1,4 @@
+import 'package:app/config/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:app/widgets/input.dart';
 import 'package:app/widgets/button.dart';
@@ -14,6 +15,7 @@ class FirstLoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: null,
       body: Container(
@@ -24,38 +26,38 @@ class FirstLoginPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(top: 75, bottom: 50),
-                    height: 225,
+                    margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 7.5, bottom: SizeConfig.blockSizeVertical * 5.0),
+                    height: SizeConfig.blockSizeVertical * 22.5,
                     child: Stack(
                       alignment: Alignment.center,
                       children: <Widget>[
                         Container(
-                          width: 225,
-                          height: 225,
+                          width: SizeConfig.blockSizeVertical * 35,
+                          height: SizeConfig.blockSizeVertical * 35,
                           child: Stack(
                             alignment: Alignment.center,
                             children: <Widget>[
                               Container(
-                                width: 150,
-                                height: 150,
+                                width: SizeConfig.blockSizeVertical * 17.5,
+                                height: SizeConfig.blockSizeVertical * 17.5,
                                 decoration: BoxDecoration(
                                   color: Colors.blue,
-                                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                                  borderRadius: BorderRadius.all(Radius.circular(SizeConfig.blockSizeVertical * 17.5 / 3)),
                                   image: DecorationImage(
                                     image: AssetImage('lib/assets/images/profil_pic.jpg'),
                                   ),
                                 ),
                               ),
                               Positioned(
-                                top: 35 / 2,
-                                left: 225 / 2 + 75,
+                                top: SizeConfig.blockSizeVertical,
+                                left: SizeConfig.blockSizeVertical * 35 / 2 + SizeConfig.blockSizeVertical * 10,
                                 child: Container(
-                                  width: 35,
-                                  height: 35,
-                                  padding: EdgeInsets.all(5),
+                                  width: SizeConfig.blockSizeVertical * 4,
+                                  height: SizeConfig.blockSizeVertical * 4,
+                                  padding: EdgeInsets.all(SizeConfig.blockSizeVertical * 0.5),
                                   decoration: BoxDecoration(
                                     color: Color(0xFFFFDA1A),
-                                    borderRadius: BorderRadius.all(Radius.circular(12.5)),
+                                    borderRadius: BorderRadius.all(Radius.circular(SizeConfig.blockSizeVertical * 4 / 3)),
                                   ),
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -83,8 +85,8 @@ class FirstLoginPage extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    top: 35,
-                    bottom: 35,
+                    top: SizeConfig.blockSizeVertical * 3.5,
+                    bottom: SizeConfig.blockSizeVertical * 3.5,
                   ),
                   child: Text(
                     'Please add your avatar and provide\nyour full name and job title',
@@ -106,8 +108,8 @@ class FirstLoginPage extends StatelessWidget {
                   controller: _job,
                 ),
                 Button(
-                  top: 35,
-                  bottom: 30,
+                  top: SizeConfig.blockSizeVertical * 3.5,
+                  bottom: SizeConfig.blockSizeVertical * 3.0,
                   text: 'Next',
                   onPressed: (BuildContext c) {
                     Navigator.of(context).pushNamed('/group');

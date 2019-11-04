@@ -1,3 +1,4 @@
+import 'package:app/config/size_config.dart';
 import 'package:app/widgets/bottom_sheet.dart';
 import 'package:app/widgets/bottom_sheet_content.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: null,
       body: Container(
@@ -26,14 +28,12 @@ class SignInPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(top: 75, bottom: 50),
-                  height: 225,
+                  margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 7.5, bottom: SizeConfig.blockSizeVertical * 5.0),
+                  height: SizeConfig.blockSizeVertical * 22.5,
                   child: Stack(
                     alignment: Alignment.center,
                     children: <Widget>[
                       Container(
-                        width: 200,
-                        height: 200,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('lib/assets/images/sign_in.png'),
@@ -55,8 +55,8 @@ class SignInPage extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    top: 35,
-                    bottom: 35,
+                    top: SizeConfig.blockSizeVertical * 3.5,
+                    bottom: SizeConfig.blockSizeVertical * 3.5,
                   ),
                   child: Text(
                     'Sign in by using email address\nand a password for the app',
@@ -79,8 +79,8 @@ class SignInPage extends StatelessWidget {
                   controller: _password,
                 ),
                 Button(
-                  top: 35,
-                  bottom: 30,
+                  top: SizeConfig.blockSizeVertical * 3.5,
+                  bottom: SizeConfig.blockSizeVertical * 3.0,
                   text: 'Connect',
                   onPressed: (BuildContext c) {
                     // Navigator.of(context).pushNamed('/first_login');

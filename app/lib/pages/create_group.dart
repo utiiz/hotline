@@ -1,5 +1,6 @@
 import 'package:app/assets/animations/btn_animation.dart';
 import 'package:app/assets/models/user.dart';
+import 'package:app/config/size_config.dart';
 import 'package:flare_dart/math/mat2d.dart';
 import 'package:flare_flutter/flare.dart';
 import 'package:flare_flutter/flare_controller.dart';
@@ -154,6 +155,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
   }
 
   List<Widget> _generaterUserList() {
+    SizeConfig().init(context);
     List<Widget> widgets = new List();
     map.forEach((letter, users) {
       widgets.add(Column(
@@ -202,6 +204,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: null,
       body: Container(
@@ -211,7 +214,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
             Container(
               child: ListView(
                 controller: _scroll,
-                padding: EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 100),
+                padding: EdgeInsets.only(top: 0, left: 0, right: 0, bottom: SizeConfig.blockSizeVertical * 10),
                 children: <Widget>[
                   Transform.translate(
                     offset: Offset(0, MediaQuery.of(context).viewPadding.top / 4 * 3),
@@ -231,22 +234,22 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
                                 alignment: Alignment.center,
                                 children: <Widget>[
                                   Container(
-                                    width: 225,
-                                    height: 225,
+                                    width: SizeConfig.blockSizeVertical * 30,
+                                    height: SizeConfig.blockSizeVertical * 30,
                                     child: Stack(
                                       alignment: Alignment.center,
                                       children: <Widget>[
                                         Container(
-                                          width: 150,
-                                          height: 150,
+                                          width: SizeConfig.blockSizeVertical * 17.5,
+                                          height: SizeConfig.blockSizeVertical * 17.5,
                                           decoration: BoxDecoration(
                                             color: Color(0xFFF8F8FA),
-                                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                                            borderRadius: BorderRadius.all(Radius.circular(SizeConfig.blockSizeVertical * 17.5 / 3)),
                                           ),
                                         ),
                                         Container(
-                                          width: 125,
-                                          height: 125,
+                                          width: SizeConfig.blockSizeVertical * 12.5,
+                                          height: SizeConfig.blockSizeVertical * 12.5,
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
                                               image: AssetImage('lib/assets/images/group.png'),
@@ -289,8 +292,8 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
                             opacity: textAnimation,
                             child: Container(
                               margin: EdgeInsets.only(
-                                top: 10,
-                                bottom: 20,
+                                top: SizeConfig.blockSizeVertical * 1,
+                                bottom: SizeConfig.blockSizeVertical * 2,
                               ),
                               child: Text(
                                 'Add group name, description\nand add some persons.',
@@ -345,7 +348,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
                         s = s.clamp(0.0, 1.0);
 
                         return Container(
-                          height: 50,
+                          height: SizeConfig.blockSizeVertical * 5,
                           margin: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top - 1.0),
                           padding: EdgeInsets.only(left: 25, right: 25),
                           alignment: Alignment.centerLeft,
@@ -370,10 +373,10 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.symmetric(horizontal: 10),
-                                width: 20,
-                                height: 20,
-                                decoration: BoxDecoration(color: Color(0xFFFFDA1A), borderRadius: BorderRadius.all(Radius.circular(20 / 3))),
+                                margin: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeVertical * 1),
+                                width: SizeConfig.blockSizeVertical * 2,
+                                height: SizeConfig.blockSizeVertical * 2,
+                                decoration: BoxDecoration(color: Color(0xFFFFDA1A), borderRadius: BorderRadius.all(Radius.circular(SizeConfig.blockSizeVertical * 2 / 3))),
                                 child: Center(
                                   child: Text(
                                     counter.toString(),
@@ -390,7 +393,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
                         );
                       },
                       content: Container(
-                        padding: EdgeInsets.only(top: 7.5, bottom: 7.5),
+                        padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 0.75, bottom: SizeConfig.blockSizeVertical * 0.75),
                         child: Column(
                           children: _generaterUserList(),
                         ),
@@ -409,7 +412,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
               child: IgnorePointer(
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 100,
+                  height: SizeConfig.blockSizeVertical * 10,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Colors.white, Colors.white.withOpacity(0.5), Colors.white.withOpacity(0)],
