@@ -83,13 +83,13 @@ class SignInPage extends StatelessWidget {
                   bottom: SizeConfig.blockSizeVertical * 3.0,
                   text: 'Connect',
                   onPressed: (BuildContext c) {
-                    // Navigator.of(context).pushNamed('/first_login');
-                    showModalBottomSheet(
+                    Navigator.of(context).pushNamed('/first_login');
+                    /* showModalBottomSheet(
                       context: c,
                       builder: (context) => BottomSheetW(),
                       backgroundColor: Colors.transparent,
                       isScrollControlled: true,
-                    );
+                    ); */
                   },
                 ),
                 RichText(

@@ -111,7 +111,8 @@ class _UserItemState extends State<UserItem> with SingleTickerProviderStateMixin
                   border: Border.all(color: Color(0xFFFFDA1A), width: borderAnimation.value),
                   borderRadius: BorderRadius.all(Radius.circular(UserItem.size / 3)),
                   image: DecorationImage(
-                    image: AssetImage('lib/assets/images/profil_pic.jpg'),
+                    image: AssetImage('lib/assets/images/profil_pic_men.jpg'),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

@@ -47,6 +47,7 @@ flutter:
    - lib/assets/images/sign_in.png
    - lib/assets/images/group.png
    - lib/assets/images/profil_pic.jpg
+   - lib/assets/images/profil_pic_men.jpg
    - lib/assets/icons/camera.png
    - lib/assets/animations/btn_animation.flr
   #  - images/a_dot_ham.jpeg

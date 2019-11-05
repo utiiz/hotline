@@ -44,7 +44,8 @@ class FirstLoginPage extends StatelessWidget {
                                   color: Colors.blue,
                                   borderRadius: BorderRadius.all(Radius.circular(SizeConfig.blockSizeVertical * 17.5 / 3)),
                                   image: DecorationImage(
-                                    image: AssetImage('lib/assets/images/profil_pic.jpg'),
+                                    image: AssetImage('lib/assets/images/profil_pic_men.jpg'),
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
