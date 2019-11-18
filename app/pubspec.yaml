@@ -25,6 +25,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   sticky_headers: ^0.1.8
   flare_flutter: any
+  graphql_flutter: ^2.1.0
+  http: ^0.12.0+2
 
 dev_dependencies:
   flutter_test:

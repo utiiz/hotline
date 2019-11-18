@@ -1,12 +1,16 @@
 import 'package:app/assets/animations/btn_animation.dart';
 import 'package:app/assets/models/user.dart';
 import 'package:app/config/size_config.dart';
+import 'package:app/models/person.dart';
+import 'package:app/services/graphql_conf.dart';
+import 'package:app/services/query.dart';
 import 'package:flare_dart/math/mat2d.dart';
 import 'package:flare_flutter/flare.dart';
 import 'package:flare_flutter/flare_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:app/widgets/input.dart';
 import 'package:app/widgets/user_item.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
@@ -38,9 +42,38 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
   Animation imageAnimation, titleAnimation, textAnimation, inputOneAnimation, inputTwoAnimation, listAnimation;
   AnimationController animationController;
 
+  GraphQLConfiguration graphQLConfiguration = GraphQLConfiguration();
+  List<Person> persons = List<Person>();
+
+  void query() async {
+    MyQuery query = MyQuery();
+    GraphQLClient _client = graphQLConfiguration.clientToQuery();
+    QueryResult result = await _client.query(
+      QueryOptions(
+        document: query.getPersons(),
+      ),
+    );
+    if (!result.hasErrors) {
+      for (var i = 0; i < result.data['persons'].edges.length; i++) {
+        setState(() {
+          persons.add(
+            Person(
+              id: result.data['persons'].edges[i].node['id'],
+              phone: result.data['persons'].edges[i].node['phone'],
+            ),
+          );
+        });
+      }
+    }
+    print('persons');
+    print(persons);
+  }
+
   @override
   void initState() {
     super.initState();
+
+    query();
 
     _scroll = ScrollController();
     _scroll.addListener(_scrollListener);
