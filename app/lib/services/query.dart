@@ -1,16 +1,21 @@
 class MyQuery {
   String getPersons() {
-    return """ 
+    return ''' 
       {
         persons {
           edges {
             node {
               id
               phone
+              user {
+                username
+                firstName
+                lastName
+              }
             }
           }
         }
       }
-    """;
+    ''';
   }
 }

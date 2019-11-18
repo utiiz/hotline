@@ -1,4 +1,4 @@
-import 'package:app/assets/models/user.dart';
+import 'package:app/models/user.dart';
 import 'package:app/widgets/rounded_checkbox.dart';
 import 'package:flutter/material.dart';
 
@@ -122,7 +122,7 @@ class _UserItemState extends State<UserItem> with SingleTickerProviderStateMixin
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      widget.user.name,
+                      widget.user.firstName + ' ' + widget.user.lastName,
                       style: TextStyle(
                         fontFamily: 'Verdana',
                         fontSize: 14,
@@ -131,7 +131,7 @@ class _UserItemState extends State<UserItem> with SingleTickerProviderStateMixin
                       ),
                     ),
                     Text(
-                      widget.user.job,
+                      widget.user.email,
                       style: TextStyle(
                         fontFamily: 'Verdana',
                         fontSize: 12,

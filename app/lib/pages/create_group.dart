@@ -1,7 +1,7 @@
 import 'package:app/assets/animations/btn_animation.dart';
-import 'package:app/assets/models/user.dart';
 import 'package:app/config/size_config.dart';
 import 'package:app/models/person.dart';
+import 'package:app/models/user.dart';
 import 'package:app/services/graphql_conf.dart';
 import 'package:app/services/query.dart';
 import 'package:flare_dart/math/mat2d.dart';
@@ -53,20 +53,29 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
         document: query.getPersons(),
       ),
     );
+    print('result');
+    print(result.errors);
     if (!result.hasErrors) {
-      for (var i = 0; i < result.data['persons'].edges.length; i++) {
+      print('result.data');
+      print(result.data['persons']['edges']);
+      print(result.data['persons']['edges'][0]['node']['id']);
+      for (var i = 0; i < result.data['persons']['edges'].length; i++) {
+        User user = User(
+          username: result.data['persons']['edges'][i]['node']['user']['username'],
+          firstName: result.data['persons']['edges'][i]['node']['user']['firstName'],
+          lastName: result.data['persons']['edges'][i]['node']['user']['lastName'],
+        );
         setState(() {
           persons.add(
             Person(
-              id: result.data['persons'].edges[i].node['id'],
-              phone: result.data['persons'].edges[i].node['phone'],
+              id: result.data['persons']['edges'][i]['node']['id'],
+              phone: result.data['persons']['edges'][i]['node']['phone'],
+              user: user,
             ),
           );
         });
       }
     }
-    print('persons');
-    print(persons);
   }
 
   @override
@@ -128,44 +137,8 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
 
   Map<String, List<User>> map = {
     'A': [
-      User(name: 'Aaron Singleton', job: 'Business Analyst'),
-      User(name: 'Abigall Flores', job: 'HR Specialist'),
-    ],
-    'B': [
-      User(name: 'Bennett Reed', job: 'Recruiter'),
-      User(name: 'Beth Shaw', job: 'Software Engineer'),
-    ],
-    'C': [
-      User(name: 'Bennett Reed', job: 'Recruiter'),
-      User(name: 'Beth Shaw', job: 'Software Engineer'),
-    ],
-    'D': [
-      User(name: 'Bennett Reed', job: 'Recruiter'),
-      User(name: 'Beth Shaw', job: 'Software Engineer'),
-    ],
-    'E': [
-      User(name: 'Bennett Reed', job: 'Recruiter'),
-      User(name: 'Beth Shaw', job: 'Software Engineer'),
-    ],
-    'F': [
-      User(name: 'Bennett Reed', job: 'Recruiter'),
-      User(name: 'Beth Shaw', job: 'Software Engineer'),
-    ],
-    'G': [
-      User(name: 'Bennett Reed', job: 'Recruiter'),
-      User(name: 'Beth Shaw', job: 'Software Engineer'),
-    ],
-    'H': [
-      User(name: 'Bennett Reed', job: 'Recruiter'),
-      User(name: 'Beth Shaw', job: 'Software Engineer'),
-    ],
-    'I': [
-      User(name: 'Bennett Reed', job: 'Recruiter'),
-      User(name: 'Beth Shaw', job: 'Software Engineer'),
-    ],
-    'J': [
-      User(name: 'Bennett Reed', job: 'Recruiter'),
-      User(name: 'Beth Shaw', job: 'Software Engineer'),
+      User(firstName: 'Aaron', lastName: 'Singleton', email: 'Business Analyst'),
+      User(firstName: 'Abigall', lastName: 'Flores', email: 'HR Specialist'),
     ],
   };
 
@@ -246,6 +219,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> with TickerProviderSt
           children: <Widget>[
             Container(
               child: ListView(
+                physics: ScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 controller: _scroll,
                 padding: EdgeInsets.only(top: 0, left: 0, right: 0, bottom: SizeConfig.blockSizeVertical * 10),
                 children: <Widget>[
