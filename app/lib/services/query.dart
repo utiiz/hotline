@@ -1,7 +1,7 @@
 class MyQuery {
   String getPersons() {
-    return ''' 
-      {
+    return r''' 
+      query {
         persons {
           edges {
             node {

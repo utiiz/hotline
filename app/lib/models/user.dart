@@ -12,11 +12,11 @@ class User {
 
   getUsername() => this.username;
 
-  getUser() => this.firstName;
+  getFirstName() => this.firstName;
 
-  getPhone() => this.lastName;
+  getLastname() => this.lastName;
 
-  getProfile() => this.email;
+  getEmail() => this.email;
 
   getPassword() => this.password;
 }
